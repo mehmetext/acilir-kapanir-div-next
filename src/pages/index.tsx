@@ -15,6 +15,7 @@ export default function Home() {
 			</Head>
 			<div className="flex w-screen h-screen justify-center items-center">
 				<div className="flex flex-col w-2/3 gap-4">
+					<Accordion firstOpened />
 					<Accordion />
 				</div>
 			</div>

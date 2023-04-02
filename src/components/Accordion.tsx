@@ -1,10 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function Accordion() {
+type Props = {
+	firstOpened?: boolean;
+};
+
+export default function Accordion({ firstOpened = false }: Props) {
 	const content = useRef<HTMLDivElement>(null);
 
-	const [isOpen, setIsOpen] = useState(false);
-	const [height, setHeight] = useState("0px");
+	const [isOpen, setIsOpen] = useState(firstOpened);
+	const [height, setHeight] = useState(firstOpened ? "auto" : "0px");
 	const [screenWidth, setScreenWidth] = useState(0);
 
 	useEffect(() => {
