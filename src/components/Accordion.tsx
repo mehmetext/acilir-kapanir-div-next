@@ -2,9 +2,10 @@ import { useEffect, useRef, useState } from "react";
 
 type Props = {
 	firstOpened?: boolean;
+	text: string;
 };
 
-export default function Accordion({ firstOpened = false }: Props) {
+export default function Accordion({ firstOpened = false, text }: Props) {
 	const content = useRef<HTMLDivElement>(null);
 
 	const [isOpen, setIsOpen] = useState(firstOpened);
@@ -41,12 +42,7 @@ export default function Accordion({ firstOpened = false }: Props) {
 				className="overflow-hidden transition-all duration-300"
 			>
 				<div className="p-4 bg-blue-50">
-					<p>
-						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti
-						optio quo ducimus laboriosam velit voluptas omnis illo tempora. Vero
-						natus aliquam pariatur quae, incidunt excepturi! Error eos earum
-						velit eveniet.
-					</p>
+					<p>{text}</p>
 				</div>
 			</div>
 		</div>
