@@ -5,6 +5,13 @@ export default function Accordion() {
 
 	const [isOpen, setIsOpen] = useState(false);
 	const [height, setHeight] = useState("0px");
+	const [screenWidth, setScreenWidth] = useState(0);
+
+	useEffect(() => {
+		const handleResize = () => setScreenWidth(window.innerWidth);
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
 
 	function toggleIsOpen() {
 		setIsOpen(!isOpen);
@@ -14,7 +21,7 @@ export default function Accordion() {
 		if (content?.current) {
 			setHeight(isOpen ? `${content.current.scrollHeight}px` : "0px");
 		}
-	}, [isOpen]);
+	}, [isOpen, screenWidth]);
 
 	return (
 		<div className="flex flex-col border border-blue-500 rounded-xl overflow-hidden">
